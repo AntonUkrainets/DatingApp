@@ -1,3 +1,4 @@
+using DatingApp.API.Models;
 using ElixirShop.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,5 +10,7 @@ namespace ElixirShop.API.Data
             : base(options) { }
 
         public DbSet<Value> Values { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }
