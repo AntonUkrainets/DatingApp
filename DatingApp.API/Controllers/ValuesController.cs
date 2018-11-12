@@ -14,14 +14,14 @@ namespace ElixirShop.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        public DataContext _context;
+        private readonly DataContext _context;
 
         public ValuesController(DataContext context)
         {
             _context = context;
         }
 
-        // GET api/values
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {

@@ -11,7 +11,7 @@ namespace DatingApp.API.Data
 {
     public class AuthRepository : IAuthRepository
     {
-        public DataContext _context;
+        private readonly DataContext _context;
         public AuthRepository(DataContext context)
         {
             _context = context;
@@ -24,8 +24,7 @@ namespace DatingApp.API.Data
             if(user == null)
                 return null;
             
-            bool isValid = VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt);
-            if(!isValid)
+            if(!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
                 return null;
             
             return user;
@@ -36,7 +35,8 @@ namespace DatingApp.API.Data
             using(var hmac = new HMACSHA512(passwordSalt))
             {
                 var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-                for (int i = 0; i < computedHash.Length; i++)
+                int length = computedHash.Length;
+                for (int i = 0; i < length; i++)
                     if(computedHash[i] != passwordHash[i])
                         return false;
             }
