@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using DatingApp.API.Models;
-using ElixirShop.API.Data;
+using DatingApp.API.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Data

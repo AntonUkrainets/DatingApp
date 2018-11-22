@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ElixirShop.API.Migrations
+namespace DatingApp.API.Migrations
 {
     public partial class AddedUserEntity : Migration
     {

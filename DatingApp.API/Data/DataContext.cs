@@ -1,8 +1,7 @@
 using DatingApp.API.Models;
-using ElixirShop.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ElixirShop.API.Data
+namespace DatingApp.API.Data
 {
     public class DataContext : DbContext
     {
