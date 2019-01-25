@@ -1,12 +1,12 @@
 <div class="card">
   <div class="card-body">
     <div *ngIf="messages?.length === 0">
-      <p>No messages yet... say hi my using the message box below</p>
+      No messages yet... say hi my using the message box below
     </div>
 
     <ul class="chat">
       <li *ngFor="let message of messages">
-        <!--to dem-->
+        <!-- to dem -->
         <div *ngIf="message.senderId == recipientId">
           <span class="chat-img float-left">
             <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}}" class="rounded-circle">
@@ -14,7 +14,7 @@
           <div class="chat-body">
             <div class="header">
               <strong class="primary-font">{{message.senderKnownAs}}</strong>
-              <small class="text-muted float-left">
+              <small class="text-muted float-right">
                 <span class="fa fa-clock-o">{{message.messageSent | timeAgo}}</span>
               </small>
             </div>
@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        <!--to me-->
+        <!-- to me -->
         <div *ngIf="message.senderId != recipientId">
           <span class="chat-img float-right">
             <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}" class="rounded-circle">

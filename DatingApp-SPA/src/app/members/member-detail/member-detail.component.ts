@@ -26,8 +26,8 @@ export class MemberDetailComponent implements OnInit {
     });
 
     this.route.queryParams.subscribe(params => {
-      const selectTab = params['tab'];
-      this.memberTabs.tabs[selectTab > 0 ? selectTab : 0].active = true;
+      const selectedTab = params['tab'];
+      this.memberTabs.tabs[selectedTab > 0 ? selectedTab : 0].active = true;
     });
 
     this.galleryOptions = [
