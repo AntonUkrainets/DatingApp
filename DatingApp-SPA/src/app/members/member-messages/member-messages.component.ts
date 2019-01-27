@@ -29,6 +29,10 @@ export class MemberMessagesComponent implements OnInit {
         tap(messages => {
           for (let i = 0; i < messages.length; i ++) {
             if (messages[i].isRead === false && messages[i].recipientId === currentUserId) {
+              //
+              // const date = messages[i].messageSent.toLocaleTimeString();
+              // messages[i].messageSent = date; // new Date(date);
+              //
               this.userService.markAsRead(currentUserId, messages[i].id);
             }
           }
@@ -45,7 +49,7 @@ export class MemberMessagesComponent implements OnInit {
     this.newMessage.recipientId = this.recipientId;
     this.userService.sendMessage(this.authService.decodedToken.nameid, this.newMessage)
       .subscribe((message: Message) => {
-        this.messages.unshift(message);
+        this.messages.push(message);
         this.newMessage.content = '';
     }, error => {
       this.alertify.error(error);
