@@ -90,6 +90,7 @@ namespace DatingApp.API
 
             services.AddCors();
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
             Mapper.Reset();
             
             services.AddAutoMapper();
@@ -98,6 +99,8 @@ namespace DatingApp.API
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();            
             services.AddScoped<LogUserActivity>();
+
+            //services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -126,7 +129,7 @@ namespace DatingApp.API
             }
 
             //app.UseHttpsRedirection();
-            seeder.SeedUsers();
+            //seeder.SeedUsers();
 
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             app.UseAuthentication();
@@ -138,6 +141,10 @@ namespace DatingApp.API
                     defaults: new { controller = "Fallback", action = "Index" }
                 );
             });
+
+            //app.UseSignalR(routes => {
+               // routes.MapHub<>("/members");
+            //});
         }
     }
 }
